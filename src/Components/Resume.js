@@ -1,10 +1,10 @@
-import React, { Component } from "react";
-import Slide from "react-reveal";
+import React, { Component } from 'react';
+import Slide from 'react-reveal';
 
 class Resume extends Component {
   getRandomColor() {
-    let letters = "0123456789ABCDEF";
-    let color = "#";
+    let letters = '0123456789ABCDEF';
+    let color = '#';
     for (let i = 0; i < 6; i++) {
       color += letters[Math.floor(Math.random() * 16)];
     }
@@ -42,15 +42,15 @@ class Resume extends Component {
     });
 
     const skills = this.props.data.skills.map((skills) => {
-      const backgroundColor = this.getRandomColor();
-      const className = "bar-expand " + skills.name.toLowerCase();
-      const width = skills.level;
-
       return (
-        <li key={skills.name}>
-          <span style={{ width, backgroundColor }} className={className}></span>
-          <em>{skills.name}</em>
-        </li>
+        <div key={skills.company}>
+          <h3>{skills.company}</h3>
+          <p className="info">
+            {work.title}
+            <span>&bull;</span> <em className="date">{skills.years}</em>
+          </p>
+          <p>{skills.description}</p>
+        </div>
       );
     });
 
@@ -85,19 +85,17 @@ class Resume extends Component {
         </Slide>
 
         <Slide left duration={1300}>
-          <div className="row skill">
+          <div className="row work">
             <div className="three columns header-col">
               <h1>
-                <span>Skills</span>
+                <span>Project</span>
               </h1>
             </div>
 
             <div className="nine columns main-col">
               <p>{skillmessage}</p>
 
-              <div className="bars">
-                <ul className="skills">{skills}</ul>
-              </div>
+              <div className="nine columns main-col">{skills}</div>
             </div>
           </div>
         </Slide>
